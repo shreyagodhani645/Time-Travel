@@ -1,0 +1,259 @@
+/* ══════════════════════════════════════════════════════════
+   ChronoGate — Global Stylesheet
+   Stranger Things Inspired Time Machine Interface
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Reset ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Share Tech Mono', monospace;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0000; }
+::-webkit-scrollbar-thumb { background: #cc0000; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #ff0000; }
+
+/* ── Selection ── */
+::selection {
+  background: rgba(255, 0, 0, 0.3);
+  color: #fff;
+}
+
+/* ── Custom Range Slider ── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #1a0000, #330000);
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #440000;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #ff0000, #cc0000);
+  border: 2px solid #ff6b6b;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ff0000, 0 0 20px rgba(255, 0, 0, 0.4);
+  transition: box-shadow 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 15px #ff0000, 0 0 30px rgba(255, 0, 0, 0.6);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #ff0000, #cc0000);
+  border: 2px solid #ff6b6b;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ff0000;
+}
+
+/* ── Custom Checkbox ── */
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #cc0000;
+  background: #0a0000;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+input[type="checkbox"]:checked {
+  background: #cc0000;
+  box-shadow: 0 0 8px #ff0000;
+}
+
+input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* ── Keyframes ── */
+@keyframes floatUp {
+  0%   { opacity: 0; transform: translateY(0); }
+  20%  { opacity: 0.8; }
+  80%  { opacity: 0.4; }
+  100% { opacity: 0; transform: translateY(-150px); }
+}
+
+@keyframes blink {
+  0%, 49%  { opacity: 1; }
+  50%, 100% { opacity: 0.15; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 12px #cc0000, 0 0 4px #ff0000 inset; }
+  50%      { box-shadow: 0 0 35px #ff0000, 0 0 60px #880000, 0 0 8px #ff0000 inset; }
+}
+
+@keyframes flicker {
+  0%   { opacity: 1; }
+  4%   { opacity: 0.6; }
+  8%   { opacity: 1; }
+  12%  { opacity: 0.8; }
+  16%  { opacity: 1; }
+  20%  { opacity: 0.4; }
+  24%  { opacity: 1; }
+  50%  { opacity: 0.9; }
+  54%  { opacity: 0.5; }
+  58%  { opacity: 1; }
+  80%  { opacity: 0.85; }
+  84%  { opacity: 0.4; }
+  88%  { opacity: 1; }
+  100% { opacity: 0.95; }
+}
+
+@keyframes flickerSubtle {
+  0%   { opacity: 1; }
+  10%  { opacity: 0.85; }
+  20%  { opacity: 1; }
+  40%  { opacity: 0.9; }
+  60%  { opacity: 1; }
+  80%  { opacity: 0.92; }
+  100% { opacity: 1; }
+}
+
+@keyframes portalPulse {
+  0%, 100% { filter: drop-shadow(0 0 8px #ff0000); }
+  50%      { filter: drop-shadow(0 0 25px #ff0000) drop-shadow(0 0 45px #880000); }
+}
+
+@keyframes burstParticle {
+  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.1); }
+}
+
+@keyframes statusPulse {
+  0%, 100% { box-shadow: 0 0 3px #ff6b6b, 0 0 8px #ff0000; }
+  50%      { box-shadow: 0 0 6px #ff6b6b, 0 0 15px #ff0000, 0 0 25px #a30000; }
+}
+
+@keyframes glitchShift {
+  0%   { transform: translate(0); }
+  20%  { transform: translate(-3px, 2px); }
+  40%  { transform: translate(3px, -1px); }
+  60%  { transform: translate(-1px, 3px); }
+  80%  { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes scanlineMove {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes loadBar {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes cursorBlink {
+  0%, 100% { border-right-color: transparent; }
+  50%      { border-right-color: #ff0000; }
+}
+
+@keyframes warpZoom {
+  0%   { transform: scale(1) rotate(0deg); filter: blur(0px); opacity: 1; }
+  30%  { transform: scale(1.5) rotate(5deg); filter: blur(2px); opacity: 0.8; }
+  60%  { transform: scale(3) rotate(-3deg); filter: blur(6px); opacity: 0.5; }
+  100% { transform: scale(8) rotate(10deg); filter: blur(12px); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes rotateDialSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes countdownPulse {
+  0%, 100% { transform: scale(1); text-shadow: 0 0 40px #ff0000; }
+  50%      { transform: scale(1.15); text-shadow: 0 0 80px #ff0000, 0 0 120px #880000; }
+}
+
+@keyframes arrivalGlow {
+  0%, 100% { text-shadow: 0 0 20px #00ff88, 0 0 40px #00cc66; }
+  50%      { text-shadow: 0 0 40px #00ff88, 0 0 80px #00cc66, 0 0 120px #008844; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes vhsNoise {
+  0%   { background-position: 0 0; }
+  100% { background-position: 100% 100%; }
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to   { width: var(--progress); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  html { font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+  html { font-size: 13px; }
+}
